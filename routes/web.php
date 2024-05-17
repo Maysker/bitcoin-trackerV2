@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\AddBalanceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,5 +18,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/picture-route', [FileUploadController::class, 'store']);
+
+Route::post('/add-balance/{userId}', [UserController::class, 'updateBalance'])->name('add.balance');
 
 require __DIR__.'/auth.php';
