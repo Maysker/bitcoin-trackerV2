@@ -1,32 +1,16 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Http\Controllers;
 
-class CreateTransactionHistoriesTable extends Migration
+use App\Models\TransactionHistory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
+class TransactionHistoryController extends Controller
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function index()
     {
-        Schema::create('transaction_histories', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->enum('buySell', ['buy', 'sell']);
-            $table->decimal('amount', 15, 8);
-            $table->decimal('rate', 15, 8);
-            $table->timestamps();
-        });
+        $transactions = TransactionHistory::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        return view('profile.transactions', ['transactions' => $transactions]);
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('transaction_histories');
-    }
-
 }

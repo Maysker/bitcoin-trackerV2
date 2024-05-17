@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionHistoryController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,5 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('auth')->get('/profile/transactions', [TransactionHistoryController::class, 'index']);
 
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::post('/dashboard', [DashboardController::class, 'handleForm'])->name('dashboard.handleForm')->middleware('auth');
 
 require __DIR__.'/auth.php';
