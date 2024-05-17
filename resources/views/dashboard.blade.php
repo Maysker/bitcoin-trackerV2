@@ -31,21 +31,29 @@
                     <form method="POST" action="{{ route('dashboard.handleForm') }}">
                         @csrf
                         <div class="mb-4">
-                            <label for="action" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Buy
-                                or sell Bitcoin</label>
-                            <select class="form-control" id="action" name="action">
+                            <label for="action">Buy or sell Bitcoin</label>
+                            <select class="form-control mt-1 block text-black" id="action" name="action">
                                 <option value="buy">Buy</option>
                                 <option value="sell">Sell</option>
                             </select>
                         </div>
-
+                
                         <div class="mb-4">
-                            <label for="amount"
-                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Amount:</label>
-                            <input type="number" step="0.00000001" class="form-control mt-1 block w-full"
-                                id="amount" name="amount" placeholder="Amount">
+                            <label for="amount">Amount:</label>
+                            <input type="number" step="0.00000001" class="form-control mt-1 block text-black" id="amount" name="amount" placeholder="Amount">
                         </div>
-
+                
+                        @if ($errors->any())
+                            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </form>
+                </div>
                         @if ($errors->any())
                             <div class="bg-red-500 text-white p-4 rounded mb-4">
                                 <ul>
