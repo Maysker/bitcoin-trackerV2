@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -20,5 +20,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::post('/dashboard', [DashboardController::class, 'handleForm'])->name('dashboard.handleForm')->middleware('auth');
+
+// Fallback route
+Route::fallback(function () {
+    return redirect()->route('welcome');
+});
 
 require __DIR__.'/auth.php';
