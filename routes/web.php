@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\AddBalanceController;
 use App\Http\Controllers\TransactionHistoryController;
 use App\Http\Controllers\DashboardController;
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,5 +30,9 @@ Route::post('/dashboard', [DashboardController::class, 'handleForm'])->name('das
 Route::fallback(function () {
     return redirect()->route('welcome');
 });
+
+Route::post('/picture-route', [FileUploadController::class, 'store']);
+
+Route::post('/add-balance/{userId}', [UserController::class, 'updateBalance'])->name('add.balance');
 
 require __DIR__.'/auth.php';
