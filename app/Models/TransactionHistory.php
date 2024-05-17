@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionHistory extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'user_id', 'buySell', 'amount', 'rate'
+    ];
 }

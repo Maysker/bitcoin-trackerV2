@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container">
+    <div class="text-gray-900 dark:text-gray-100">
         <h1>Transactiegeschiedenis</h1>
         <table class="table">
             <thead>
