@@ -16,8 +16,9 @@ class DashboardController extends Controller
         $response = file_get_contents($endpoint);
         $btcInfo = json_decode($response, true);
         $btcRate = $btcInfo['price'];
+        $portfolioWorth = $btcRate * $activeUser->bitcoin + $activeUser->balance;
 
-        $data = ['name' => $activeUser->name, 'balance' => $activeUser->balance, 'btcBalance' => $activeUser->bitcoin, 'btcRate' => $btcRate];
+        $data = ['name' => $activeUser->name, 'balance' => $activeUser->balance, 'btcBalance' => $activeUser->bitcoin, 'btcRate' => $btcRate, 'portfolioWorth' => $portfolioWorth];
 
         // Pass the user data to the view
         return view('dashboard', compact('data'));
