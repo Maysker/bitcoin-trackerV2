@@ -21,7 +21,7 @@
     </div>
 @endif
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div style="margin-top: 30px;" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex justify-around p-6">
             <!-- User Information -->
             <div class="text-gray-900 dark:text-gray-100">
@@ -33,7 +33,7 @@
             </div>
 
             <!-- Form -->
-            <div class="text-gray-900 dark:text-gray-100">
+            <div style="margin-left: 5rem;" class="text-gray-900 dark:text-gray-100">
                 <form method="POST" action="{{ route('dashboard.handleForm') }}">
                     @csrf
                     <div class="mb-4">
@@ -65,6 +65,8 @@
                 </form>
             </div>
         </div>
+    </div>
+        
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-3">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -85,8 +87,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-3">
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-start">
             <a href="{{ route('transactions.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
